@@ -1,0 +1,18 @@
+<resources>
+    <!-- Base application theme for Dark Mode -->
+    <style name="Theme.FireCalc" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primary_accent</item>
+        <item name="colorPrimaryVariant">@color/primary_accent_variant</item>
+        <item name="colorOnPrimary">#121418</item>
+
+        <item name="colorSecondary">@color/accent_blue</item>
+        <item name="colorSecondaryVariant">@color/accent_blue</item>
+        <item name="colorOnSecondary">#121418</item>
+
+        <!-- Status bar and navigation bar in Dark Mode -->
+        <item name="android:statusBarColor">@color/calc_background</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:navigationBarColor">@color/calc_background</item>
+        <item name="android:windowBackground">@color/calc_background</item>
+    </style>
+</resources>

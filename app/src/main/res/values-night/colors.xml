@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Brand & Accent Colors -->
+    <color name="primary_accent">#FFA726</color>
+    <color name="primary_accent_variant">#FF9800</color>
+    <color name="accent_blue">#60A5FA</color>
+    <color name="accent_red">#F87171</color>
+
+    <!-- Surfaces & Backgrounds (Dark Palette) -->
+    <color name="calc_background">#121418</color>
+    <color name="calc_surface_card">#1A1D24</color>
+    <color name="calc_card_stroke">#282C37</color>
+
+    <!-- Keypad Button Fills (Dark Palette) -->
+    <color name="btn_number_bg">#232832</color>
+    <color name="btn_number_text">#F3F4F6</color>
+    <color name="btn_number_ripple">#353C4B</color>
+
+    <color name="btn_operator_bg">#3D2C1A</color>
+    <color name="btn_operator_text">#FFB74D</color>
+    <color name="btn_operator_ripple">#543E25</color>
+
+    <color name="btn_scientific_bg">#1E293B</color>
+    <color name="btn_scientific_text">#93C5FD</color>
+    <color name="btn_scientific_ripple">#334155</color>
+
+    <color name="btn_action_bg">#2B2428</color>
+    <color name="btn_action_text">#FCA5A5</color>
+    <color name="btn_action_ripple">#433038</color>
+
+    <color name="btn_equals_bg">#FF9900</color>
+    <color name="btn_equals_text">#121418</color>
+    <color name="btn_equals_ripple">#FFB84D</color>
+
+    <!-- Display & Typography (Dark Palette) -->
+    <color name="display_expression_text">#94A3B8</color>
+    <color name="display_result_text">#F8FAFC</color>
+    <color name="display_preview_text">#60A5FA</color>
+    <color name="display_badge_bg">#1E293B</color>
+    <color name="display_badge_text">#60A5FA</color>
+
+    <!-- Dialog / History Panel -->
+    <color name="history_item_bg">#1E222A</color>
+    <color name="divider_color">#2D323E</color>
+</resources>

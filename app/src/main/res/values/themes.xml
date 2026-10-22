@@ -1,0 +1,73 @@
+<resources>
+    <!-- Base application theme -->
+    <style name="Theme.FireCalc" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color -->
+        <item name="colorPrimary">@color/primary_accent</item>
+        <item name="colorPrimaryVariant">@color/primary_accent_variant</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+
+        <!-- Secondary brand color -->
+        <item name="colorSecondary">@color/accent_blue</item>
+        <item name="colorSecondaryVariant">@color/accent_blue</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+
+        <!-- Status bar and navigation bar -->
+        <item name="android:statusBarColor">@color/calc_background</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:navigationBarColor">@color/calc_background</item>
+        <item name="android:windowBackground">@color/calc_background</item>
+    </style>
+
+    <!-- Base Calculator Button Style -->
+    <style name="Widget.FireCalc.Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:minHeight">@dimen/btn_min_height</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:insetLeft">0dp</item>
+        <item name="android:insetRight">0dp</item>
+        <item name="cornerRadius">@dimen/btn_corner_radius</item>
+        <item name="android:layout_margin">@dimen/btn_margin</item>
+        <item name="elevation">@dimen/btn_elevation</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+
+    <style name="Widget.FireCalc.Button.Number" parent="Widget.FireCalc.Button">
+        <item name="backgroundTint">@color/btn_number_bg</item>
+        <item name="android:textColor">@color/btn_number_text</item>
+        <item name="rippleColor">@color/btn_number_ripple</item>
+        <item name="android:textSize">@dimen/text_size_number</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Widget.FireCalc.Button.Operator" parent="Widget.FireCalc.Button">
+        <item name="backgroundTint">@color/btn_operator_bg</item>
+        <item name="android:textColor">@color/btn_operator_text</item>
+        <item name="rippleColor">@color/btn_operator_ripple</item>
+        <item name="android:textSize">@dimen/text_size_operator</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Widget.FireCalc.Button.Scientific" parent="Widget.FireCalc.Button">
+        <item name="backgroundTint">@color/btn_scientific_bg</item>
+        <item name="android:textColor">@color/btn_scientific_text</item>
+        <item name="rippleColor">@color/btn_scientific_ripple</item>
+        <item name="android:textSize">@dimen/text_size_scientific</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="Widget.FireCalc.Button.Action" parent="Widget.FireCalc.Button">
+        <item name="backgroundTint">@color/btn_action_bg</item>
+        <item name="android:textColor">@color/btn_action_text</item>
+        <item name="rippleColor">@color/btn_action_ripple</item>
+        <item name="android:textSize">@dimen/text_size_number</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Widget.FireCalc.Button.Equals" parent="Widget.FireCalc.Button">
+        <item name="backgroundTint">@color/btn_equals_bg</item>
+        <item name="android:textColor">@color/btn_equals_text</item>
+        <item name="rippleColor">@color/btn_equals_ripple</item>
+        <item name="android:textSize">@dimen/text_size_operator</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FireCalc</string>
+    <string name="calculator">Calculator</string>
+
+    <!-- Display Labels -->
+    <string name="default_display_value">0</string>
+    <string name="deg_mode">DEG</string>
+    <string name="rad_mode">RAD</string>
+    <string name="memory_active">M</string>
+
+    <!-- Button Labels -->
+    <string name="btn_0">0</string>
+    <string name="btn_1">1</string>
+    <string name="btn_2">2</string>
+    <string name="btn_3">3</string>
+    <string name="btn_4">4</string>
+    <string name="btn_5">5</string>
+    <string name="btn_6">6</string>
+    <string name="btn_7">7</string>
+    <string name="btn_8">8</string>
+    <string name="btn_9">9</string>
+    <string name="btn_dot">.</string>
+
+    <string name="btn_add">+</string>
+    <string name="btn_subtract">−</string>
+    <string name="btn_multiply">×</string>
+    <string name="btn_divide">÷</string>
+    <string name="btn_percent">%</string>
+    <string name="btn_equals">=</string>
+    <string name="btn_clear">C</string>
+    <string name="btn_all_clear">AC</string>
+    <string name="btn_backspace">⌫</string>
+    <string name="btn_plus_minus">±</string>
+
+    <!-- Scientific Operators -->
+    <string name="btn_sin">sin</string>
+    <string name="btn_cos">cos</string>
+    <string name="btn_tan">tan</string>
+    <string name="btn_asin">sin⁻¹</string>
+    <string name="btn_acos">cos⁻¹</string>
+    <string name="btn_atan">tan⁻¹</string>
+    <string name="btn_ln">ln</string>
+    <string name="btn_log">log</string>
+    <string name="btn_sqrt">√</string>
+    <string name="btn_power">^</string>
+    <string name="btn_square">x²</string>
+    <string name="btn_cube">x³</string>
+    <string name="btn_factorial">x!</string>
+    <string name="btn_inverse">1/x</string>
+    <string name="btn_pi">π</string>
+    <string name="btn_e">e</string>
+    <string name="btn_left_paren">(</string>
+    <string name="btn_right_paren">)</string>
+
+    <!-- Memory Operators -->
+    <string name="btn_mc">MC</string>
+    <string name="btn_mr">MR</string>
+    <string name="btn_m_plus">M+</string>
+    <string name="btn_m_minus">M−</string>
+
+    <!-- UI Actions -->
+    <string name="history_title">Calculation History</string>
+    <string name="history_empty">No calculations recorded yet</string>
+    <string name="history_clear">Clear History</string>
+    <string name="history_cleared">History cleared</string>
+    <string name="copied_to_clipboard">Copied to clipboard</string>
+    <string name="close">Close</string>
+</resources>

@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayoutLand"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/calc_background"
+    android:orientation="horizontal"
+    android:padding="@dimen/calc_padding_screen">
+
+    <!-- Left Pane: Display & Scientific Controls -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="8dp"
+        android:layout_weight="1.1"
+        android:orientation="vertical">
+
+        <!-- Top Status Bar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvAppName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/app_name"
+                android:textColor="@color/primary_accent"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/btnToggleAngleMode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:background="@drawable/badge_bg"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="@string/deg_mode"
+                android:textColor="@color/display_badge_text"
+                android:textSize="@dimen/text_size_badge"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvMemoryBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/badge_bg"
+                android:text="@string/memory_active"
+                android:textColor="@color/primary_accent"
+                android:textSize="@dimen/text_size_badge"
+                android:textStyle="bold"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/btnHistory"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Calculation History"
+                android:src="@drawable/ic_history"
+                app:tint="?android:attr/textColorPrimary" />
+        </LinearLayout>
+
+        <!-- Display Card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardDisplay"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"
+            android:layout_weight="1.2"
+            app:cardBackgroundColor="@color/calc_surface_card"
+            app:cardCornerRadius="@dimen/calc_display_card_radius"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="bottom|end"
+                android:orientation="vertical"
+                android:padding="@dimen/calc_display_card_padding">
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fillViewport="true"
+                    android:scrollbars="none">
+
+                    <TextView
+                        android:id="@+id/tvExpression"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="end|center_vertical"
+                        android:hint="0"
+                        android:textColor="@color/display_expression_text"
+                        android:textColorHint="@color/display_expression_text"
+                        android:textSize="@dimen/display_expr_size" />
+                </HorizontalScrollView>
+
+                <TextView
+                    android:id="@+id/tvLivePreview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:gravity="end"
+                    android:textColor="@color/display_preview_text"
+                    android:textSize="@dimen/display_preview_size"
+                    android:visibility="invisible"
+                    tools:text="= 42"
+                    tools:visibility="visible" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvResult"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end|bottom"
+                    android:maxLines="1"
+                    android:text="0"
+                    android:textColor="@color/display_result_text"
+                    android:textStyle="bold"
+                    app:autoSizeMaxTextSize="@dimen/display_result_max_size"
+                    app:autoSizeMinTextSize="@dimen/display_result_min_size"
+                    app:autoSizeStepGranularity="2sp"
+                    app:autoSizeTextType="uniform" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Scientific Keys Grid (4 Rows x 5 Columns) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.8"
+            android:orientation="vertical">
+
+            <!-- Sci Row 1: MC, MR, M+, M-, ( ) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnMC"
+                    style="@style/Widget.FireCalc.Button.Scientific"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/btn_mc" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnMR"
+                    style="@style/Widget.FireCalc.Button.Scientific"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/btn_mr" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnMPlus"
+                    style="@style/Widget.FireCalc.Button.Scientific"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/btn_m_plus" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnMMinus"
+                    style="@style/Widget.FireCalc.Button.Scientific"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/btn_m_minus" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnInverse"
+                    style="@style/Widget.FireCalc.Button.Scientific"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/btn_inverse" />
+            </LinearLayout>
+
+            <!-- Sci Row 2: sin, cos, tan, sqrt, power -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSin"
+                    style="@style/Widget.FireCalc.Button.Scientific"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/btn_sin" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCos"
+                    style="@style/Widget.FireCalc.Button.Scientific"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/btn_cos" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnTan"
+                    style="@style/Widget.FireCalc.Button.Scientific"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/btn_tan" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSqrt"
+                    style="@style/Widget.FireCalc.Button.Scientific"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/btn_sqrt" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnPower"
+                    style="@style/Widget.FireCalc.Button.Scientific"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/btn_power" />
+            </LinearLayout>
+
+            <!-- Sci Row 3: ln, log, pi, e, x! -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnLn"
+                    style="@style/Widget.FireCalc.Button.Scientific"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/btn_ln" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnLog"
+                    style="@style/Widget.FireCalc.Button.Scientific"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/btn_log" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnPi"
+                    style="@style/Widget.FireCalc.Button.Scientific"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/btn_pi" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnE"
+                    style="@style/Widget.FireCalc.Button.Scientific"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/btn_e" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnFactorial"
+                    style="@style/Widget.FireCalc.Button.Scientific"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/btn_factorial" />
+            </LinearLayout>
+
+            <!-- Sci Row 4: asin, acos, atan, square, cube -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnAsin"
+                    style="@style/Widget.FireCalc.Button.Scientific"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/btn_asin" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnAcos"
+                    style="@style/Widget.FireCalc.Button.Scientific"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/btn_acos" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnAtan"
+                    style="@style/Widget.FireCalc.Button.Scientific"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/btn_atan" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSquare"
+                    style="@style/Widget.FireCalc.Button.Scientific"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/btn_square" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCube"
+                    style="@style/Widget.FireCalc.Button.Scientific"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/btn_cube" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Right Pane: Primary Keypad -->
+    <LinearLayout
+        android:id="@+id/keypadContainer"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:layout_weight="1.0"
+        android:orientation="vertical">
+
+        <!-- Row 1: C, ( ), %, ⌫, ÷ -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnClear"
+                style="@style/Widget.FireCalc.Button.Action"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/btn_all_clear" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnParenLeft"
+                style="@style/Widget.FireCalc.Button.Action"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.75"
+                android:text="@string/btn_left_paren" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnParenRight"
+                style="@style/Widget.FireCalc.Button.Action"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.75"
+                android:text="@string/btn_right_paren" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnPercent"
+                style="@style/Widget.FireCalc.Button.Operator"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/btn_percent" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnBackspace"
+                style="@style/Widget.FireCalc.Button.Action"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/btn_backspace" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDivide"
+                style="@style/Widget.FireCalc.Button.Operator"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/btn_divide" />
+        </LinearLayout>
+
+        <!-- Row 2: 7, 8, 9, × -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn7"
+                style="@style/Widget.FireCalc.Button.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/btn_7" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn8"
+                style="@style/Widget.FireCalc.Button.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/btn_8" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn9"
+                style="@style/Widget.FireCalc.Button.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/btn_9" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnMultiply"
+                style="@style/Widget.FireCalc.Button.Operator"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/btn_multiply" />
+        </LinearLayout>
+
+        <!-- Row 3: 4, 5, 6, − -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn4"
+                style="@style/Widget.FireCalc.Button.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/btn_4" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn5"
+                style="@style/Widget.FireCalc.Button.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/btn_5" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn6"
+                style="@style/Widget.FireCalc.Button.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/btn_6" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSubtract"
+                style="@style/Widget.FireCalc.Button.Operator"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/btn_subtract" />
+        </LinearLayout>
+
+        <!-- Row 4: 1, 2, 3, + -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn1"
+                style="@style/Widget.FireCalc.Button.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/btn_1" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn2"
+                style="@style/Widget.FireCalc.Button.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/btn_2" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn3"
+                style="@style/Widget.FireCalc.Button.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/btn_3" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAdd"
+                style="@style/Widget.FireCalc.Button.Operator"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/btn_add" />
+        </LinearLayout>
+
+        <!-- Row 5: ±, 0, ., = -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnPlusMinus"
+                style="@style/Widget.FireCalc.Button.Action"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/btn_plus_minus" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn0"
+                style="@style/Widget.FireCalc.Button.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/btn_0" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDot"
+                style="@style/Widget.FireCalc.Button.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/btn_dot" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEquals"
+                style="@style/Widget.FireCalc.Button.Equals"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/btn_equals" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

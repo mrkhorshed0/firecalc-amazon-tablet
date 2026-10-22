@@ -1,0 +1,86 @@
+name: Auto Build Signed FireCalc AAB & APK
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-aab:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Setup Gradle 8.2
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: '8.2'
+
+      - name: Locate Project Root & Build Signed AAB + APK
+        run: |
+          if [ -f "settings.gradle" ]; then
+            PROJ_DIR="."
+          elif [ -f "FireCalc/settings.gradle" ]; then
+            PROJ_DIR="FireCalc"
+          else
+            FOUND=$(find . -maxdepth 3 -name "settings.gradle" | head -n 1)
+            PROJ_DIR=$(dirname "$FOUND")
+          fi
+          echo "Building Android project in directory: $PROJ_DIR"
+          cd "$PROJ_DIR"
+
+          if [ ! -f "app/firecalc-release.jks" ]; then
+            echo "Generating release keystore..."
+            keytool -genkeypair -v \
+              -keystore app/firecalc-release.jks \
+              -alias firecalc_key \
+              -keyalg RSA -keysize 2048 -validity 10000 \
+              -storepass "FireCalc2026!" -keypass "FireCalc2026!" \
+              -dname "CN=FireCalc Developer, OU=Mobile, O=FireCalc, L=City, ST=State, C=US"
+          fi
+
+          gradle bundleRelease assembleRelease --no-daemon --stacktrace
+
+          mkdir -p "$GITHUB_WORKSPACE/dist"
+          cp app/build/outputs/bundle/release/app-release.aab "$GITHUB_WORKSPACE/dist/FireCalc-release.aab"
+          cp app/build/outputs/apk/release/app-release.apk "$GITHUB_WORKSPACE/dist/FireCalc-release.apk"
+          ls -lh "$GITHUB_WORKSPACE/dist"
+
+      - name: Upload Signed AAB Artifact (Amazon Appstore Ready)
+        uses: actions/upload-artifact@v4
+        with:
+          name: FireCalc-Release-AAB
+          path: dist/FireCalc-release.aab
+
+      - name: Upload Signed APK Artifact (Fire Tablet Direct Install)
+        uses: actions/upload-artifact@v4
+        with:
+          name: FireCalc-Release-APK
+          path: dist/FireCalc-release.apk
+
+      - name: Publish Direct Download Release (.aab & .apk)
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0.${{ github.run_number }}
+          name: "FireCalc Release v1.0.${{ github.run_number }} (Signed .AAB & .APK)"
+          body: |
+            ### Amazon Fire Tablet Calculator — Signed Release Build
+            - **Download `FireCalc-release.aab`** below to upload directly to the Amazon Developer Console.
+            - **Download `FireCalc-release.apk`** below to install directly onto your Fire Tablet.
+          files: |
+            dist/FireCalc-release.aab
+            dist/FireCalc-release.apk

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Default / Phone / 7-inch Compact Dimensions -->
+    <dimen name="calc_padding_screen">12dp</dimen>
+    <dimen name="calc_display_card_padding">16dp</dimen>
+    <dimen name="calc_display_card_radius">20dp</dimen>
+    <dimen name="calc_display_card_stroke">1dp</dimen>
+
+    <dimen name="btn_corner_radius">16dp</dimen>
+    <dimen name="btn_margin">4dp</dimen>
+    <dimen name="btn_elevation">2dp</dimen>
+    <dimen name="btn_min_height">52dp</dimen>
+
+    <dimen name="text_size_number">22sp</dimen>
+    <dimen name="text_size_operator">24sp</dimen>
+    <dimen name="text_size_scientific">14sp</dimen>
+    <dimen name="text_size_badge">12sp</dimen>
+
+    <dimen name="display_expr_size">18sp</dimen>
+    <dimen name="display_preview_size">18sp</dimen>
+    <dimen name="display_result_min_size">24sp</dimen>
+    <dimen name="display_result_max_size">46sp</dimen>
+
+    <dimen name="history_drawer_width">320dp</dimen>
+</resources>

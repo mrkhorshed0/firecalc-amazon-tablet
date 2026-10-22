@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Tablet-Optimized Dimensions (Fire HD 8, Fire HD 10, Fire Max 11) -->
+    <dimen name="calc_padding_screen">20dp</dimen>
+    <dimen name="calc_display_card_padding">24dp</dimen>
+    <dimen name="calc_display_card_radius">24dp</dimen>
+    <dimen name="calc_display_card_stroke">1.5dp</dimen>
+
+    <dimen name="btn_corner_radius">20dp</dimen>
+    <dimen name="btn_margin">6dp</dimen>
+    <dimen name="btn_elevation">3dp</dimen>
+    <dimen name="btn_min_height">64dp</dimen>
+
+    <dimen name="text_size_number">28sp</dimen>
+    <dimen name="text_size_operator">30sp</dimen>
+    <dimen name="text_size_scientific">17sp</dimen>
+    <dimen name="text_size_badge">14sp</dimen>
+
+    <dimen name="display_expr_size">22sp</dimen>
+    <dimen name="display_preview_size">22sp</dimen>
+    <dimen name="display_result_min_size">32sp</dimen>
+    <dimen name="display_result_max_size">62sp</dimen>
+
+    <dimen name="history_drawer_width">380dp</dimen>
+</resources>

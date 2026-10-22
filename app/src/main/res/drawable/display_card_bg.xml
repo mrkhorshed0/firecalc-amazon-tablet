@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/calc_surface_card" />
+    <corners android:radius="@dimen/calc_display_card_radius" />
+    <stroke
+        android:width="@dimen/calc_display_card_stroke"
+        android:color="@color/calc_card_stroke" />
+</shape>
